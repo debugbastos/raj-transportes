@@ -1,0 +1,25 @@
+{
+  "name": "raj-transportes",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Landing page da Raj Transportes — fretes e mudanças em todo o Brasil.",
+  "type": "module",
+  "scripts": {
+    "dev": "node build.mjs --serve",
+    "build": "node build.mjs",
+    "build:single": "node build.mjs --single",
+    "typecheck": "tsc --noEmit",
+    "preview": "node build.mjs --preview"
+  },
+  "dependencies": {
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-icons": "5.7.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "esbuild": "0.28.2",
+    "typescript": "6.0.3"
+  }
+}

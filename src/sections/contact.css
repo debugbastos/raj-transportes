@@ -1,0 +1,146 @@
+.contact {
+  background: var(--mist);
+}
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.contact-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  transition: border-color 0.25s, transform 0.25s var(--ease), box-shadow 0.25s;
+}
+.contact-card:hover {
+  border-color: var(--navy);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+.contact-card__cover {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+.contact-card__icon {
+  width: 28px;
+  height: 28px;
+  color: var(--blue);
+}
+.contact-card__icon--wa {
+  color: var(--wa-hover);
+}
+.contact-card__note {
+  font-size: 0.86rem;
+  color: var(--steel);
+}
+.contact-card__k {
+  margin-top: 4px;
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--steel);
+}
+.contact-card__v {
+  font-size: 1.08rem;
+  font-weight: 800;
+  font-stretch: 106%;
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+.contact-card__row {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+}
+.contact-card__act {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.contact-card > .contact-card__act {
+  margin-top: auto;
+}
+.contact-card__act svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s var(--ease);
+}
+.contact-card:hover .contact-card__act svg {
+  transform: translateX(4px);
+}
+.contact__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-top: 36px;
+}
+.contact__cta p {
+  color: var(--steel);
+}
+.contact__cta strong {
+  color: var(--navy);
+}
+/* Instagram oficial */
+.insta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 16px 0 6px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.insta-link svg {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  padding: 7px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  transition: background-color 0.2s;
+}
+.insta-link:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: var(--shadow);
+}
+.insta-link:hover svg {
+  background: var(--blue);
+}
+.insta-link:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+@media (max-width: 1000px) {
+  .contact__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .contact__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .contact__cta .btn {
+    width: 100%;
+  }
+}

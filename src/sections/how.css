@@ -1,0 +1,149 @@
+.how {
+  background: var(--mist);
+}
+.how__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.how__step {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 22px;
+  min-width: 0;
+}
+/* Número + linha até o próximo número, como a estrada tracejada da logo */
+.how__marker {
+  display: flex;
+  align-items: center;
+}
+.how__num {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  background: var(--white);
+  color: var(--steel);
+  font-size: 1.1rem;
+  font-weight: 800;
+  font-stretch: 115%;
+  font-variant-numeric: tabular-nums;
+  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+  transition-delay: calc(var(--i) * 320ms);
+}
+.how__line {
+  flex: 1;
+  height: 2px;
+  margin: 0 12px;
+  background: repeating-linear-gradient(to right, var(--line) 0 10px, transparent 10px 18px);
+  position: relative;
+  overflow: hidden;
+}
+.how__line span {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(to right, var(--blue) 0 10px, transparent 10px 18px);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s var(--ease);
+  transition-delay: calc(var(--i) * 320ms + 200ms);
+}
+.how__steps.is-in .how__num {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+}
+.how__steps.is-in .how__line span {
+  transform: scaleX(1);
+}
+.how__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: clamp(16px, 2.4vw, 36px);
+}
+.how__icon {
+  width: 26px;
+  height: 26px;
+  color: var(--blue);
+}
+.how__body h3 {
+  font-size: 1.12rem;
+  font-weight: 700;
+  font-stretch: 106%;
+  line-height: 1.25;
+}
+.how__body p {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--steel);
+}
+.how__cta {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-stretch: 112%;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--line);
+  text-decoration-thickness: 2px;
+}
+.how__cta svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s var(--ease);
+}
+.how__cta:hover {
+  color: var(--blue);
+  text-decoration-color: var(--blue);
+}
+.how__cta:hover svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+  .how__steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .how__step {
+    grid-template-columns: 52px minmax(0, 1fr);
+    grid-template-rows: none;
+    gap: 0 20px;
+  }
+  .how__marker {
+    flex-direction: column;
+    align-items: center;
+  }
+  .how__line {
+    width: 2px;
+    height: auto;
+    min-height: 24px;
+    margin: 10px 0;
+    background: repeating-linear-gradient(to bottom, var(--line) 0 10px, transparent 10px 18px);
+  }
+  .how__line span {
+    background: repeating-linear-gradient(to bottom, var(--blue) 0 10px, transparent 10px 18px);
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  .how__steps.is-in .how__line span {
+    transform: scaleY(1);
+  }
+  .how__body {
+    padding: 10px 0 36px;
+  }
+  .how__step:last-child .how__body {
+    padding-bottom: 0;
+  }
+}

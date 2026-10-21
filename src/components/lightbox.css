@@ -1,0 +1,85 @@
+.lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  background: transparent;
+  color: var(--white);
+}
+.lightbox::backdrop {
+  background: rgba(4, 14, 28, 0.94);
+}
+.lightbox[open] {
+  animation: lb-fade 0.25s ease;
+}
+.lightbox__stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) calc(14px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+}
+.lightbox__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+.lightbox__frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+}
+.lightbox__img {
+  max-width: min(100%, 1100px);
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.8);
+  animation: lb-in 0.35s var(--ease);
+}
+.lightbox__img.from-left {
+  animation-name: lb-in-left;
+}
+.lightbox__prev,
+.lightbox__next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.lightbox__prev {
+  left: 4px;
+}
+.lightbox__next {
+  right: 4px;
+}
+.lightbox__cap {
+  text-align: center;
+  font-size: 0.95rem;
+  min-height: 1.6em;
+}
+@keyframes lb-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes lb-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+@keyframes lb-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+}

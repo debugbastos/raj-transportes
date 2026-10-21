@@ -1,0 +1,182 @@
+/*
+  Hero cinematográfico adaptado à fotografia.
+  - .hero__media tem a largura toda e exatamente a proporção da foto (aspect-ratio 1561 / 1008):
+    a foto única preenche 100% da área, inteira, sem corte, sem deformação e sem espaços vazios.
+  - O hero não tem altura fixa: a altura acompanha a foto (largura ÷ 1,549) e começa logo abaixo do header,
+    para o menu não ficar sobre a logomarca que está no céu da foto.
+  - Telas largas (≥ 1200px): o texto fica sobre a faixa de cascalho na base da foto. Os veículos terminam a
+    78% da altura da foto; o texto ocupa só os 21% inferiores, com uma camada escura apenas nessa faixa.
+  - Telas estreitas: a faixa de cascalho é baixa demais para o texto, que fica logo abaixo da foto.
+*/
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding-top: calc(var(--header-h) + 1px); /* abaixo do header (e da sua borda de 1px) */
+  background: var(--navy);
+  color: var(--white);
+}
+.hero__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--photo-ratio, 1561 / 1008);
+  overflow: hidden;
+  background: var(--navy);
+  animation: hero-fade 1.2s ease both;
+}
+.hero__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  /* A área tem a mesma proporção da foto: contain e fill coincidem, sem corte e sem sobra */
+  object-fit: contain;
+  object-position: center center;
+}
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* Escurece só a faixa de cascalho (21% inferiores), onde fica o texto; veículos e céu ficam intactos */
+  background: linear-gradient(0deg, rgba(7, 26, 48, 0.94) 0%, rgba(7, 26, 48, 0.86) 13%, rgba(7, 26, 48, 0.45) 19%, rgba(7, 26, 48, 0) 22.5%);
+  animation: hero-fade 1s 0.1s ease both;
+}
+
+/* Telas estreitas: texto abaixo da foto */
+.hero__content {
+  position: relative;
+  padding-block: clamp(28px, 6vw, 48px) clamp(40px, 8vw, 72px);
+}
+/* Bloco de texto com largura máxima e espaçamentos fixos entre os níveis */
+.hero__inner {
+  max-width: 54rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* 1. Título: o maior elemento */
+.hero__title {
+  font-size: clamp(2.4rem, 1.2rem + 3.9vw, 4.6rem);
+  font-weight: 800;
+  font-stretch: 104%;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  text-shadow: 0 4px 32px rgba(4, 14, 28, 0.55);
+}
+.hero__title-accent {
+  display: block;
+  font-style: italic;
+  font-weight: 900;
+  color: var(--sky);
+}
+
+/* 2. Texto complementar: menor e afastado do título */
+.hero__tagline {
+  margin-top: clamp(18px, 2vw, 26px);
+  max-width: 32rem;
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 18px rgba(4, 14, 28, 0.6);
+}
+
+/* 3. Botões: separados do texto */
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: clamp(28px, 3.4vw, 40px);
+}
+.hero__ctas .btn--ghost-light {
+  background: rgba(7, 26, 48, 0.35);
+  backdrop-filter: blur(4px);
+}
+.hero :focus-visible {
+  outline-color: var(--white);
+}
+
+/*
+  Telas largas: o texto fica sobre a foto, dentro da faixa de cascalho (21% inferiores da foto).
+  Os tamanhos acompanham a largura da tela, porque a altura dessa faixa também acompanha (≈ 13,5% da largura).
+*/
+@media (min-width: 1200px) {
+  .hero__overlay {
+    display: block;
+  }
+  .hero__content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-block: 0 clamp(12px, 1.3vw, 30px);
+  }
+  .hero__inner {
+    max-width: none;
+  }
+  .hero__title {
+    font-size: clamp(1.9rem, 2.8vw, 3.6rem);
+    line-height: 1.05;
+    white-space: nowrap;
+  }
+  .hero__title-accent {
+    display: inline;
+  }
+  .hero__tagline {
+    margin-top: clamp(16px, 1.1vw, 20px);
+    font-size: clamp(0.95rem, 1.1vw, 1.3rem);
+  }
+  .hero__ctas {
+    margin-top: clamp(24px, 1.7vw, 32px);
+    gap: 12px;
+  }
+  .hero__ctas .btn--lg {
+    min-height: clamp(44px, 3.4vw, 58px);
+  }
+}
+@media (max-width: 1199.98px) {
+  .hero__overlay {
+    display: none;
+  }
+}
+
+/* Entrada: rápida e sem bloquear a interação */
+.hero-in {
+  animation: hero-in 0.75s var(--ease) both;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes hero-bg {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__ctas {
+    width: 100%;
+  }
+  .hero__ctas .btn {
+    flex: 1 1 100%;
+  }
+}

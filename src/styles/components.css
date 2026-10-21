@@ -1,0 +1,594 @@
+/* ---------- Logo ---------- */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  min-width: 0;
+}
+.logo img {
+  display: block;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+}
+.logo--plate {
+  padding: 12px 18px;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+}
+
+/* ---------- Eyebrow e títulos ---------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--fs-label);
+  font-weight: 700;
+  font-stretch: 115%;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: currentColor;
+  flex: none;
+}
+.section--navy .eyebrow {
+  color: var(--sky);
+}
+.section-heading {
+  display: grid;
+  gap: 16px;
+  max-width: 44rem;
+  margin-bottom: clamp(36px, 5vw, 60px);
+}
+.title {
+  font-size: var(--fs-h2);
+  letter-spacing: -0.01em;
+}
+.title__lead {
+  display: block;
+  font-weight: 300;
+}
+/* A linha forte usa itálico pesado, como o "Transportes" da logomarca. */
+.title__strong {
+  display: block;
+  font-weight: 800;
+  font-style: italic;
+  font-stretch: 108%;
+}
+.section-heading__lede {
+  font-size: var(--fs-lede);
+  color: var(--steel);
+  max-width: 38rem;
+}
+.section-heading__lede a {
+  font-weight: 700;
+  color: var(--blue);
+}
+.section--navy .section-heading__lede {
+  color: var(--steel-light);
+}
+
+/* ---------- Botões e links ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 0 24px;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-stretch: 112%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.25s, transform 0.15s;
+}
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  transition: transform 0.25s var(--ease);
+}
+.btn:hover svg:last-child {
+  transform: translateX(3px);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn--primary {
+  background: var(--blue);
+  color: var(--white);
+}
+.btn--primary:hover {
+  background: var(--navy);
+  box-shadow: 0 12px 24px -14px rgba(7, 26, 48, 0.8);
+}
+.btn--navy {
+  background: var(--navy);
+  color: var(--white);
+}
+.btn--navy:hover {
+  background: var(--blue);
+}
+/* Botões ligados ao WhatsApp: verde da marca WhatsApp com texto escuro (contraste 9:1). */
+.btn--wa {
+  background: var(--wa);
+  color: var(--wa-ink);
+}
+.btn--wa:hover {
+  background: var(--wa-hover);
+  color: var(--white);
+}
+.btn--ghost-light {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: var(--white);
+  background: transparent;
+}
+.btn--ghost-light:hover {
+  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+}
+.btn--outline {
+  border-color: var(--navy);
+  color: var(--navy);
+  background: transparent;
+}
+.btn--outline:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--navy);
+  border-color: var(--line);
+}
+.btn--ghost:hover {
+  border-color: var(--navy);
+}
+.btn--light {
+  background: var(--white);
+  color: var(--navy);
+}
+.btn--light:hover {
+  background: var(--blue-100);
+}
+.link-arrow.link-arrow--light {
+  color: var(--white);
+  text-decoration-color: rgba(255, 255, 255, 0.35);
+}
+.link-arrow.link-arrow--light:hover {
+  color: var(--sky);
+  text-decoration-color: var(--sky);
+}
+.btn--sm {
+  min-height: 42px;
+  padding: 0 18px;
+  font-size: 0.72rem;
+}
+.btn--lg {
+  min-height: 58px;
+  font-size: 0.84rem;
+}
+.btn--block {
+  width: 100%;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.3;
+  padding-block: 10px;
+}
+.btn[aria-disabled="true"] {
+  opacity: 0.6;
+}
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-stretch: 112%;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 7px;
+  transition: text-decoration-color 0.2s;
+}
+.link-arrow svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.25s var(--ease);
+}
+.link-arrow:hover {
+  text-decoration-color: var(--blue);
+  color: var(--blue);
+}
+.link-arrow:hover svg {
+  transform: translateX(4px);
+}
+.text-btn {
+  border: 0;
+  padding: 0;
+  background: none;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--navy);
+}
+.chip-btn {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  font-size: 0.74rem;
+  font-weight: 600;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.chip-btn:hover {
+  border-color: var(--navy);
+}
+.chip-btn svg {
+  width: 14px;
+  height: 14px;
+}
+.round-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(7, 26, 48, 0.6);
+  color: var(--white);
+  transition: background-color 0.2s, color 0.2s;
+}
+.round-btn:hover {
+  background: var(--white);
+  color: var(--navy);
+}
+.round-btn svg {
+  width: 22px;
+  height: 22px;
+}
+.round-btn--light {
+  background: var(--mist);
+  color: var(--navy);
+  border-color: var(--line);
+}
+.round-btn--light:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+
+/* ---------- Entrada ao rolar ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+  animation: reveal-in 0.75s var(--ease) var(--d, 0ms) backwards;
+}
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100vw - 32px);
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  background: var(--navy);
+  color: var(--white);
+  font-size: 0.9rem;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 16px);
+  transition: opacity 0.3s, transform 0.35s var(--ease), visibility 0.3s;
+}
+.toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+.toast svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------- Botão flutuante do WhatsApp ---------- */
+.fab {
+  position: fixed;
+  right: calc(18px + env(safe-area-inset-right, 0px));
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  z-index: 40;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--wa);
+  color: var(--white);
+  box-shadow: 0 12px 28px -10px rgba(7, 26, 48, 0.55);
+  text-decoration: none;
+  transition: transform 0.3s var(--ease), opacity 0.3s, visibility 0.3s, background-color 0.2s;
+  animation: fab-in 0.6s 1.2s var(--ease) backwards;
+}
+.fab svg {
+  width: 30px;
+  height: 30px;
+  filter: drop-shadow(0 1px 1px rgba(6, 43, 22, 0.35));
+}
+.fab:hover {
+  background: var(--wa-hover);
+  transform: translateY(-3px);
+}
+.fab:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 3px;
+}
+.fab.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+}
+.fab__tip {
+  position: absolute;
+  right: 68px;
+  top: 50%;
+  white-space: nowrap;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  background: var(--navy);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(6px, -50%);
+  transition: opacity 0.2s, transform 0.25s var(--ease);
+}
+@media (hover: hover) {
+  .fab:hover .fab__tip,
+  .fab:focus-visible .fab__tip {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+@keyframes fab-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+/* ---------- Dialog de privacidade ---------- */
+dialog {
+  border: 0;
+  padding: 0;
+}
+.modal {
+  width: min(640px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  background: var(--white);
+  color: var(--navy);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.modal::backdrop {
+  background: rgba(7, 26, 48, 0.72);
+}
+.modal[open] {
+  animation: modal-in 0.3s var(--ease);
+}
+.modal__body {
+  display: grid;
+  gap: 12px;
+  padding: clamp(24px, 4vw, 40px);
+}
+.modal__close {
+  justify-self: end;
+  margin-bottom: -8px;
+}
+.modal h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  font-stretch: 110%;
+}
+.modal h3 {
+  margin-top: 8px;
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.modal p {
+  color: var(--steel);
+}
+.modal a {
+  font-weight: 700;
+  color: var(--navy);
+}
+.modal .btn {
+  justify-self: start;
+  margin-top: 8px;
+}
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* ---------- Campos de formulário ---------- */
+.field {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  min-width: 0;
+}
+.field label,
+.legend {
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+.req {
+  color: var(--error);
+}
+.opt {
+  font-weight: 400;
+  color: var(--steel);
+}
+.input {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+textarea.input {
+  resize: vertical;
+  min-height: 104px;
+}
+select.input {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 38px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--navy) 50%), linear-gradient(135deg, var(--navy) 50%, transparent 50%);
+  background-position: calc(100% - 19px) 22px, calc(100% - 14px) 22px;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+.input::placeholder {
+  color: #8b9aa2;
+}
+.input:hover {
+  border-color: #9fb1c8;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(11, 92, 197, 0.18);
+  background: #fff;
+}
+.input[aria-invalid="true"] {
+  border-color: var(--error);
+  background: #fff8f7;
+}
+.input[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 3px rgba(163, 57, 43, 0.16);
+}
+.hint {
+  font-size: 0.8rem;
+  color: var(--steel);
+}
+.hint--center {
+  text-align: center;
+}
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--error);
+  animation: error-in 0.25s var(--ease);
+}
+.error svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+}
+@keyframes error-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+/* Estado da consulta de CEP */
+.cep-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+.cep-status:empty {
+  display: none;
+}
+.cep-status svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+}
+.cep-status--loading {
+  color: var(--steel);
+}
+.cep-status--found {
+  color: var(--blue-600);
+  font-weight: 600;
+}
+.cep-status--notfound,
+.cep-status--error {
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  background: var(--error-bg);
+  color: var(--error);
+  font-weight: 600;
+}
+.cep-status .text-btn {
+  color: var(--error);
+}
+.spinner {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  border-top-color: var(--blue);
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

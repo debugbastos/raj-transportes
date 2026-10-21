@@ -1,0 +1,132 @@
+.fleet {
+  background: var(--white);
+}
+.fleet__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px 32px;
+  margin-bottom: clamp(28px, 4vw, 40px);
+}
+.fleet__head .section-heading {
+  margin-bottom: 0;
+}
+.filters__group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.filter {
+  min-height: 42px;
+  padding: 0 18px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.filter:hover {
+  border-color: var(--navy);
+}
+.filter[aria-pressed="true"] {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+.fleet__grid {
+  display: grid;
+  gap: 12px;
+}
+/* Mosaico completo: 3 colunas, destaque 2x2 e fotos verticais em 1x2 — fecha 12 células sem buracos. */
+.fleet__grid--mosaic {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: clamp(150px, 17vw, 228px);
+  grid-auto-flow: dense;
+}
+.fleet__grid--flat {
+  grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+  grid-auto-rows: clamp(220px, 24vw, 320px);
+}
+.tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--mist);
+  cursor: zoom-in;
+  animation: tile-in 0.5s var(--ease) backwards;
+  animation-delay: calc(var(--k) * 50ms);
+}
+.tile--feature {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.tile--tall {
+  grid-row: span 2;
+}
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.tile:hover img {
+  transform: scale(1.05);
+}
+.tile__cap {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 36px 14px 12px;
+  background: linear-gradient(to top, rgba(7, 26, 48, 0.85), rgba(7, 26, 48, 0));
+  color: var(--white);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: left;
+}
+.tile__cap svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  opacity: 0.85;
+}
+.fleet__note {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  font-size: 0.88rem;
+  color: var(--steel);
+  max-width: 60rem;
+}
+@keyframes tile-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+@media (max-width: 760px) {
+  .fleet__grid--mosaic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: clamp(120px, 34vw, 210px);
+  }
+  .tile--feature {
+    grid-row: span 1;
+  }
+  .fleet__grid--flat {
+    grid-template-columns: repeat(var(--m), minmax(0, 1fr));
+    grid-auto-rows: clamp(160px, 46vw, 300px);
+  }
+}

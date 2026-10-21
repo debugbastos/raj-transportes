@@ -1,0 +1,65 @@
+/*
+  Paleta oficial derivada da nova logomarca da RAJ Transportes.
+  A logo usa azul-marinho (letras "RAJ" e "Transportes") e azul royal (a curva da estrada e o sublinhado),
+  sobre fundo branco. O site usa essa dupla, mais tons neutros frios derivados do marinho.
+  O verde aparece somente em elementos do WhatsApp.
+*/
+:root {
+  color-scheme: light;
+
+  /* Azul-marinho da logo e tons derivados */
+  --navy: #071a30;
+  --navy-800: #0c2442;
+  --navy-700: #123157;
+
+  /* Azul royal da logo */
+  --blue: #0b5cc5;
+  --blue-600: #094fa9;
+  --blue-100: #e4eefc;
+  --sky: #8fb8f0; /* azul claro para texto sobre azul-marinho */
+
+  /* Neutros */
+  --white: #ffffff;
+  --mist: #f2f5f9; /* fundo das seções alternadas */
+  --line: #dbe2ec;
+  --card: #ffffff;
+  --steel: #4f5f75; /* texto secundário sobre branco (contraste 6,4:1) */
+  --steel-light: #a8b7cb; /* texto secundário sobre azul-marinho */
+
+  /* WhatsApp (reservado aos elementos do WhatsApp) */
+  --wa: #25d366;
+  --wa-hover: #128c7e;
+  --wa-ink: #062b16;
+
+  /* Erro */
+  --error: #b42318;
+  --error-bg: #fdecea;
+
+  --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
+
+  /* Escala tipográfica */
+  --fs-hero: clamp(2.6rem, 1.6rem + 4vw, 5rem);
+  --fs-h2: clamp(1.85rem, 1.25rem + 2.3vw, 3rem);
+  --fs-h3: 1.2rem;
+  --fs-lede: clamp(1.02rem, 0.98rem + 0.25vw, 1.15rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-label: 0.72rem;
+
+  /* Espaçamento e layout */
+  --container: 1200px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --section-y: clamp(72px, 9vw, 128px);
+  --header-h: 96px;
+  --radius: 4px;
+  --radius-lg: 8px;
+
+  --shadow-sm: 0 1px 2px rgba(7, 26, 48, 0.08);
+  --shadow: 0 1px 2px rgba(7, 26, 48, 0.06), 0 18px 40px -22px rgba(7, 26, 48, 0.35);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@media (max-width: 600px) {
+  :root {
+    --header-h: 78px;
+  }
+}

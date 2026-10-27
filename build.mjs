@@ -60,8 +60,15 @@ const htmlPlugin = {
   },
 };
 
+// Arquivos para o Google e buscadores que também são aceitos na raiz do repositório
+// (além de public/): sitemap, robots e o arquivo de verificação do Search Console (google*.html).
+const ROOT_SEO_FILES = /^(sitemap.*\.xml|robots\.txt|google[\w-]*\.html|BingSiteAuth\.xml)$/i;
+
 async function copyPublic() {
   if (existsSync("public")) await cp("public", outdir, { recursive: true });
+  for (const f of await readdir(".")) {
+    if (ROOT_SEO_FILES.test(f) && !existsSync(`public/${f}`)) await cp(f, `${outdir}/${f}`);
+  }
 }
 
 async function makeSingle({ js, css, html }) {
